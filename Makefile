@@ -7,6 +7,11 @@ AWS_CLI_DOCKER_COMPOSE  ?= docker-compose run --rm awscli
 HASH := $(shell git rev-parse HEAD)
 VERACODE_ID?= "someveracodeid"
 
+ENVFILE ?= aws.template
+
+envfile:
+	copy $(ENVFILE) aws.env
+
 .PHONY : build
 build:
 	docker build -t ${FULL_TAG} .
