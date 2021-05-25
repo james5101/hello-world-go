@@ -10,8 +10,8 @@ services:
         working_dir: "/app/src"
         volumes: 
             - "./:/app"
-    awscli:
-        image: amazon/aws-cli
-        working_dir: "/app"
-        env_file: 
-            - ./aws.env
+    # awscli:
+    #     image: amazon/aws-cli
+    #     working_dir: "/app"
+    #     env_file: 
+    #         - ./aws.env
