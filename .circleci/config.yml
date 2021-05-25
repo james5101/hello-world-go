@@ -17,9 +17,9 @@ jobs:
           key: go-mod-v4-{{ checksum "go.sum" }}
           paths:
             - "/go/pkg/mod"
-      - build:
+      - run:
           name: Bulild
-          command: |
+          command: 
             make build
       - run:
           name: Run tests
