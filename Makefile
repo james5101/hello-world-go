@@ -24,7 +24,7 @@ run:
 	docker run -d -p ${PORT}:${PORT} --name ${DOCKER_TAG} ${FULL_TAG}
 
 .PHONY: test
-test: envfile
+test: 
 	${GO_TEST_DOCKER_COMPOSE}
 
 .PHONY: create_table
