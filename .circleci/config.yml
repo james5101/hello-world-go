@@ -15,7 +15,7 @@ jobs:
           version: 19.03.13
           # docker_layer_caching: true
       - codecov/upload:
-          file: {{ coverage_report_filepath }}
+          file: src/main.go
       - restore_cache:
           keys:
             - go-mod-v4-{{ checksum "go.sum" }}
