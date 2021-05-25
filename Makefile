@@ -8,13 +8,6 @@ HASH := $(shell git rev-parse HEAD)
 VERACODE_ID?= "someveracodeid"
 
 
-
-envfile:
-	echo "from envfile"
-	echo "FOO=${FOO}"
-	echo "BAR=${BAR}"	
-	cp $(ENVFILE) aws.env
-
 .PHONY : build
 build:
 	docker build -t ${FULL_TAG} .
@@ -28,7 +21,7 @@ test:
 	${GO_TEST_DOCKER_COMPOSE}
 
 .PHONY: create_table
-create_table: envfile
+create_table: 
 	echo "from create_table"
 	echo "FOO=${FOO}"
 	echo "BAR=${BAR}"
@@ -43,7 +36,7 @@ create_table: envfile
 		--provisioned-throughput \
         	ReadCapacityUnits=10,WriteCapacityUnits=5
 
-create_tags: envfile
+create_tags: 
 	${AWS_CLI_DOCKER_COMPOSE} dynamodb put-item \
 		--table-name ${DYNAMODB_TABLE}  \
 		--item \
