@@ -7,6 +7,7 @@ GO_TEST_DOCKER_COMPOSE  ?=  go test ./... -v -cover
 HASH := $(shell git rev-parse HEAD)
 VERACODE_ID?= "someveracodeid"
 
+export CODECOV_TOKEN
 
 .PHONY : build
 build:
@@ -22,6 +23,9 @@ test:
 	go tool cover -html=c.out -o coverage.html
 	cat coverage.html
 	mv coverage.html /tmp/artifacts
+
+.PHONY: codecov_report
+	curl -X GET https://codecov.io/api/pub/gh/james5101/gsd-hello-world/settings -H "Authorization: ${CODECOV_TOKEN}"
 
 # .PHONY: create_table
 # create_table: 
