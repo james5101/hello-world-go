@@ -43,7 +43,7 @@ jobs:
             curl -X GET -u ${SONARCLOUD_API_TOKEN}: 'https://sonarcloud.io/api/measures/component?component=james5101_gsd-hello-world&metricKeys=code_smells,bugs,violations' >> /tmp/artifacts/report.txt
 
       - store_artifacts:
-        path: /tmp/artifacts
+          path: /tmp/artifacts
 
 workflows:
   main:
