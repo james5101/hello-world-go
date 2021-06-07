@@ -37,4 +37,4 @@ jobs:
       - store_test_results:
           path: /tmp/artifacts
       - codecov/upload:
-          file: /tmp/artifacts/coverage.html
+          file: /tmp/artifacts/c.out
