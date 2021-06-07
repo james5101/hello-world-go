@@ -29,7 +29,7 @@ jobs:
       - codecov/upload:
           file: /tmp/artifacts/coverage.txt
       - sonarcloud/scan:
-          sonar_token_variable_name: ${SONARCLOUD_TOKEN}
+
       - run:
           name: Appened to Report
           command: |
