@@ -36,6 +36,11 @@ jobs:
             curl -X GET https://codecov.io/api/pub/gh/james5101/gsd-hello-world/settings?access_token=${CODECOV_API_TOKEN}
             curl -u ${SONARCLOUD_API_TOKEN}: https://sonarcloud.io/api/measures/component
 
+      - run:
+          name: Appened to Report1
+          command: |
+            curl -u ${SONARCLOUD_API_TOKEN}: https://sonarcloud.io/api/measures/component
+
 workflows:
   main:
     jobs:
