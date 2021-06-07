@@ -14,8 +14,6 @@ jobs:
       - setup_remote_docker:
           version: 19.03.13
           # docker_layer_caching: true
-      - codecov/upload:
-          file: src/main.go
       # - restore_cache:
       #     keys:
       #       - go-mod-v4-{{ checksum "go.sum" }}
@@ -28,13 +26,12 @@ jobs:
       #       - "/go/pkg/mod"
       - run:
           name: Bulild
-          command: 
-            make build
+          command: make build
       - run:
           name: Run tests
           command: |
-            # mkdir -p /tmp/test-reports
-            # gotestsum --junitfile /tmp/test-reports/unit-tests.xml
             make test
       - store_test_results:
-          path: /tmp/test-reports
+          path: /tmp/artifacts
+      - codecov/upload:
+          file: /tmp/artifacts/coverage.html

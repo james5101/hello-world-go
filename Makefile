@@ -18,7 +18,9 @@ run:
 
 .PHONY: test
 test: 
-	${GO_TEST_DOCKER_COMPOSE}
+	go test -coverprofile=c.out
+	go tool cover -html=c.out -o coverage.html
+	mv coverage.html /tmp/artifacts
 
 # .PHONY: create_table
 # create_table: 
