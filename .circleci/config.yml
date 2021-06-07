@@ -33,13 +33,18 @@ jobs:
       - run:
           name: Appened to Report
           command: |
-            curl -X GET https://codecov.io/api/pub/gh/james5101/gsd-hello-world/settings?access_token=${CODECOV_API_TOKEN}
-            curl -u ${SONARCLOUD_API_TOKEN}: https://sonarcloud.io/api/measures/component
+            echo "Code Coverage" > /tmp/artifacts/report.txt
+            curl -X GET https://codecov.io/api/pub/gh/james5101/gsd-hello-world/settings?access_token=${CODECOV_API_TOKEN} >> /tmp/artifacts/report.txt
+
 
       - run:
           name: Appened to Report1
           command: |
-            curl -X GET -u ${SONARCLOUD_API_TOKEN}: 'https://sonarcloud.io/api/measures/component?component=james5101_gsd-hello-world&metricKeys=code_smells,bugs,violations'
+          echo "Static Code nalysis" >> /tmp/artifacts/report.txt
+            curl -X GET -u ${SONARCLOUD_API_TOKEN}: 'https://sonarcloud.io/api/measures/component?component=james5101_gsd-hello-world&metricKeys=code_smells,bugs,violations' >> /tmp/artifacts/report.txt
+      
+      - store_artifacts:
+        path: /tmp/artifacts
 
 workflows:
   main:
