@@ -18,7 +18,7 @@ run:
 
 .PHONY: test
 test: 
-	go test -coverprofile=c.out
+	go test ./... -v -coverprofile=c.out
 	go tool cover -html=c.out -o coverage.html
 	mv coverage.html /tmp/artifacts
 
