@@ -41,4 +41,4 @@ jobs:
       - run:
           name: Appened to Report
           command: |
-            curl -X GET https://codecov.io/api/pub/gh/james5101/gsd-hello-world?access_token=${CODECOV_API_TOKEN}
+            curl -X GET https://codecov.io/api/pub/gh/james5101?access_token=${CODECOV_API_TOKEN}
