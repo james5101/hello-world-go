@@ -30,11 +30,11 @@ jobs:
       - run:
           name: Run tests
           command: |
-            go test ./... -v -coverprofile=c.out
-            go tool cover -html=c.out -o coverage.html
-            cat c.out
-            mv c.out /tmp/artifacts
+            mkdir /tmp/artifacts
+            go test ./... -race -coverprofile=coverage.txt -covermode=atomic
+            cat coverage.txt
+            mv coverage.txt /tmp/artifacts
       - store_test_results:
           path: /tmp/artifacts
       - codecov/upload:
-          file: /tmp/artifacts/c.out
+          file: /tmp/artifacts/coverage.txt
