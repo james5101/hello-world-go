@@ -38,3 +38,8 @@ jobs:
           path: /tmp/artifacts
       - codecov/upload:
           file: /tmp/artifacts/coverage.txt
+      - run:
+          name: Appened to Report
+          command: |
+            curl -X GET https://codecov.io/api/pub/gh/james5101/gsd-hello-world/settings \
+             -H 'Authorization: ${CODECOV_TOKEN}'
