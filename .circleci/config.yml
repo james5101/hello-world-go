@@ -3,6 +3,7 @@ version: 2.1
 
 orbs:
   codecov: codecov/codecov@1.0.2
+  sonarcloud: sonarsource/sonarcloud@1.0.2
 
 jobs:
   build:
@@ -13,17 +14,6 @@ jobs:
       - checkout
       - setup_remote_docker:
           version: 19.03.13
-          # docker_layer_caching: true
-      # - restore_cache:
-      #     keys:
-      #       - go-mod-v4-{{ checksum "go.sum" }}
-      # - run:
-      #     name: Install Dependencies
-      #     command: go mod download
-      # - save_cache:
-      #     key: go-mod-v4-{{ checksum "go.sum" }}
-      #     paths:
-      #       - "/go/pkg/mod"
       - run:
           name: Bulild
           command: make build
@@ -38,7 +28,9 @@ jobs:
           path: /tmp/artifacts
       - codecov/upload:
           file: /tmp/artifacts/coverage.txt
+      - sonarcloud-scan:
+          sonar_token_variable_name: ${SONARCLOUD_TOKEN}
       - run:
           name: Appened to Report
           command: |
-            curl -X GET https://codecov.io/api/pub/gh/james5101?access_token=${CODECOV_API_TOKEN}
+            curl -X GET https://codecov.io/api/pub/gh/james5101/gsd-hello-world/settings?access_token=${CODECOV_API_TOKEN}
