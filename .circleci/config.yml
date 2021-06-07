@@ -28,7 +28,7 @@ jobs:
           path: /tmp/artifacts
       - codecov/upload:
           file: /tmp/artifacts/coverage.txt
-      - sonarcloud/scan:
+      - sonarcloud/scan
 
       - run:
           name: Appened to Report
