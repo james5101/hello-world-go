@@ -39,7 +39,7 @@ jobs:
       - run:
           name: Appened to Report1
           command: |
-            curl -X GET -u ${SONARCLOUD_API_TOKEN}: 'https://sonarcloud.io/api/measures/component?component=james5101_gsd-hello-world&metricKeys=ncloc,complexity,violations'
+            curl -X GET -u ${SONARCLOUD_API_TOKEN}: 'https://sonarcloud.io/api/measures/component?component=james5101_gsd-hello-world&metricKeys=code_smells,bugs,violations'
 
 workflows:
   main:
