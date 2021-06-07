@@ -27,7 +27,8 @@ test:
 .PHONY: codecov_report
 codecov_report:
 	echo ${CODECOV_TOKEN}
-	curl -X GET https://codecov.io/api/pub/gh/james5101/gsd-hello-world/settings -H "Authorization: ${CODECOV_TOKEN}"
+	curl -X GET https://codecov.io/api/pub/gh/james5101/gsd-hello-world/settings \
+		-H 'Authorization: ${CODECOV_TOKEN}'
 
 # .PHONY: create_table
 # create_table: 
